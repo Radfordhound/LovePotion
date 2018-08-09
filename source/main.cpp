@@ -32,6 +32,7 @@ extern "C"
 #include "objects/gamepad/wrap_gamepad.h"
 
 #include "socket/luasocket.h"
+#include <lutf8lib.h>
 
 #include "modules/love.h"
 #include "modules/joystick.h"
@@ -63,6 +64,7 @@ int main(int argc, char * argv[])
     luaL_openlibs(L);
 
     love_preload(L, LuaSocket::Initialize, "socket");
+	love_preload(L, luaopen_luautf8, "utf8");
 
     luaL_requiref(L, "love", Love::Initialize, 1);
 
